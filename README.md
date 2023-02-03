@@ -1,9 +1,9 @@
 # Blog
 
-## Visit the [website](https://binh2.github.io/brother-blog/)
+## Visit the [website](https://sudo-rainman.github.io/ctf-writeup/)
 
 If the link doesn't work, use this url
-https://binh2.github.io/brother-blog/
+https://sudo-rainman.github.io/ctf-writeup/
 
 ## Project setup
 ```
