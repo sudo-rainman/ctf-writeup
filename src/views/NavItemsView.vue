@@ -22,8 +22,15 @@
 
   height: 20vh;
   width: 100%;
-
+  font-style: italic;
+  text-shadow: 0 0 0.2em rgb(1, 182, 253), 0 0 0.25em rgba(1, 5, 253, 0.7),
+    0 0 0.3em rgba(5, 1, 253, 0.5), 0 0 0.4em rgba(1, 182, 253, 0.3),
+    0 0 0.6em rgba(18, 1, 253, 0.493), 0 0 1em rgba(1, 26, 253, 0.1);
+  
+  text-decoration: none;
+  font-weight: lighter;
   opacity: 12vw;
+ 
 
   --tornado-width: 53px;
 }
@@ -93,7 +100,7 @@
 }
 .nav__nav-item {
   font-size: 1em;
-
+  
   /* for move up animation */
   position: relative;
 }

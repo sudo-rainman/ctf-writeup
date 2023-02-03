@@ -1,6 +1,6 @@
 :root {
-  --color-blue: rgb(38, 0, 255);
-  --color-dark-blue: rgba(0, 20, 49, 0.5);
+  --color-blue: orangered;
+  /* --color-dark-blue: rgba(0, 20, 49, 0.5); */
 
   --border-width: 2px;
   --margin: 5px;
@@ -10,7 +10,8 @@
   font-size: 16px;
 }
 body {
-  background-color: rgba(2, 1, 1, 0.781);
+  /* rgba(2, 1, 1, 0.781); */
+  background-color: #1E2328;
   color: #ffffff;
   font-family: victormono;
   margin: var(--margin);
@@ -78,4 +79,53 @@ a:visited {
     outline: none;
     visibility: hidden;
   }
+}
+
+@font-face {
+  font-family: "Spiegel-Regular";
+  src: url("./fonts/Spiegel-OTF/Spiegel-Regular.otf") format("opentype");
+}
+
+@font-face {
+  font-family: "BeaufortforLOL-Bold";
+  src: url("./fonts/BeaufortForLoL-OTF/BeaufortforLOL-Bold.otf") format("opentype");
+}
+
+h1 {
+  font-family: "BeaufortforLOL-Bold";
+  color: #C8AA6E;
+}
+
+h2 {
+  font-family: "BeaufortforLOL-Bold";
+  color: #C8AA6E;
+}
+
+h3 {
+  font-family: "BeaufortforLOL-Bold";
+  color: #C8AA6E;
+}
+
+p{
+  font-family: "Spiegel-Regular";
+  color: #A09B8C;
+}
+a{
+  font-family: "Spiegel-Regular";
+  
+}
+ul{
+  font-family: "Spiegel-Regular";
+  color: #A09B8C;
+}
+li{
+  font-family: "Spiegel-Regular";
+  color: #A09B8C;
+}
+summary{
+  font-family: "BeaufortforLOL-Bold";
+  color: #F0E6D2;
+}
+hr {
+  color: #C89B3C;
 }
