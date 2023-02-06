@@ -11,7 +11,7 @@
       </ul> 
       <ul> 
         <li>
-          <NavItem to="/dicectf">DICECTF 2023 Writeup</NavItem>
+          <NavItem to="/dicectf">DiceCTF 2023 Writeup</NavItem>
         </li>
       </ul> 
     </div>
