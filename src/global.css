@@ -129,3 +129,25 @@ summary{
 hr {
   color: #C89B3C;
 }
+
+.post-nav {
+  outline: 2px solid rgb(89, 70, 156);
+  background-color:rgba(0, 10, 31, 0.733);
+  padding: 1em;
+}
+
+.container {
+/* display: inline-block; */
+
+line-height: 1.7em;
+text-align: justify;
+text-justify: inter-word;
+width: 60em;
+/* flex-grow: 2; */
+/* flex-basis: min-content; */
+}
+.chall {
+  outline: 2px solid rgb(89, 70, 156);
+  background-color:rgba(0, 10, 31, 0.733);
+  padding: 1em;
+}

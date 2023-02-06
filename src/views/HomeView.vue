@@ -3,7 +3,7 @@
     <h3>about</h3>
     <hr/>
     <p>
-      hi! My name is Long, aka TN. I am playing CTF for team <a href="https://bkisc.com"> BKISC </a> mainly as a Cryptographer. 
+      hi! My name is Long. I am playing CTF for team <a href="https://bkisc.com"> BKISC </a> mainly as a Cryptographer. 
     </p>
     <p>
       i started out on CTF from March 2022. So this blog mainly contains writeups in my CTF thingy journey (ye i likes to play LOL thats why my blog looks like this lmao).

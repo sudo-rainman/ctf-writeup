@@ -1,7 +1,8 @@
 <template>
   <div class="container">
     <h1>MHSCTF 2023 Writeup </h1>
-    <p> 15/3/2023</p> 
+    <hr/>
+    <p> &#128198 15/3/2023</p> 
     <div class="post-nav">
       <h3> Challenges </h3>
       <details open=""> 
@@ -23,7 +24,8 @@
       <hr />
       <p>asdasd </p>
       <h2 id="datingshow">Dating Show</h2>
-      <p> asdasd</p>
+      <hr />
+      <p>asdasd</p>
       
     </div>
   </div>
