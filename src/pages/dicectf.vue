@@ -64,7 +64,7 @@
       <p> For this chall the padded <strong> FLAG </strong> is at most 552 bits long, so minimum of 3 pairs of 2048-bit RSA key and an e=11 (1) is vulnerable to Hastad's attack but since there were random noises, a more generalization of Hastad's broadcast attack shud be used. </p> 
       <p> So to solve for the condition (1) where we want to send 3 different seeds and it must always satisfy that rng(seed) = 11. </p>
       <p> We first must calculate <strong>a </strong> such that the rng have cycle length of 3 where the starting seed is 11</p>
-      <p> The success rate is <math-jax latex="\frac{1}{27}"> </math-jax> since all three of the seed have cycle of 3 but may overshoot value 11 (rng(1st_seed)=11 when the rng run time is divided by 3, rng(2nd_seed)=11 when the rng run time is divided by 2, rng(3rd_seed)=11 when the rng run time is 1 modulo 2)</p>
+      <p> The success rate is <math-jax latex="\frac{1}{27}"> </math-jax> since all three of the seed have cycle of 3 but may overshoot value 11 (rng(1st_seed)=11 when the rng run time is divided by 3, rng(2nd_seed)=11 when the rng run time is 2 modulo 3, rng(3rd_seed)=11 when the rng run time is 1 modulo 3)</p>
       <div style="display: flex; justify-content: center; ">
       <img src="../assets/dicectf/lcg.png"> 
       </div>
