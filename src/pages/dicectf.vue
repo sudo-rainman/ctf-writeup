@@ -23,7 +23,7 @@
     <div>
       <h2 id="rSabin">rSabin</h2>
       <hr />
-      <p> Kinda em classic rsa problem where u need to factorize the modulus N to get decrypt the encrypted message </p>
+      <p> Kinda em classic RSA problem in CTF where u need to factorize the modulus N to decrypt the encrypted message </p>
       <div class="chall"> 
         <h3> Challenge Description </h3>
         <p> As <a href="https://ctftime.org/writeup/32264">baby RSA showed </a>, nth_root is pretty useful and definitely always fast.</p>
@@ -31,26 +31,26 @@
         <p> Solver: <a href="https://github.com/sudo-rainman/ctf_script/blob/main/dicectf_2023/rSabin/solver/solver.py"> my solver </a> </p>
       </div>
       <h3> Solution </h3>
-      <p> One can realize this challenge's cryptosystem is somewhat similar to Rabin cryptosystem by nth_root decryption and small public exponent (e=17) (or the challs name), which provides poor security against CPA (chosen-ciphertext attack). Here is a explained example: <a href="https://crypto.stackexchange.com/questions/96060/rabin-cryptosystem-chosen-ciphertext-attack"> link </a> </p>
+      <p> One can realize this challenge's cryptosystem is somewhat similar to Rabin cryptosystem by nth_root decryption and small public exponent (e=17) (or the challs name), which provides poor security against CPA (chosen-ciphertext attack). Here is an explained example: <a href="https://crypto.stackexchange.com/questions/96060/rabin-cryptosystem-chosen-ciphertext-attack"> link </a> </p>
       <HighLight autodetect v-bind:code="code" />
       <p> So now we got the idea of the attack when e=2, how to expand it to our case which is e=17 </p>
-      <p>(1) Assume <strong> e|p-1 </strong> </p>
+      <p>(1) Assume <strong> e|p-1 </strong> or <strong> e|q-1 </strong> </p>
       <p>(2) Pick a random number r, compute <math-jax latex="s=r^{17} \mod N"></math-jax>, then send s to the decryptor  </p>
       <p>(3) The challs decryptor will return us some number <math-jax latex="t_i=\sqrt[17]{s} \mod N"> </math-jax> where i = 1,2,...,16 </p>
       <p>
       (4) Because of our assumption in (1), decryption of s will not be unique and exist 17 roots where <math-jax latex="t_1^{17}=t_2^{17}=...=t_{16}^{17}=r^{17}=s \mod N"> </math-jax> then we have <math-jax latex="t_i^{17}-r^{17}=0 \mod N"> </math-jax>,which can be factor as <math-jax latex="(t_i - r)*(some polynomial) =0 \mod N"> </math-jax> 
       so if we took <math-jax latex="gcd((t_i - r),N)"> </math-jax> we can get a non trivial factor of N 
       </p>
-      <p>(5) After we factor out p,q from N, and decrypt the ciphertext (i used Cantor-Zassenhaus algo to calculate nth root of p cuz the built-in nth_root function of SageMath runs too slow)</p>
+      <p>(5) After we factor out p,q from N, and decrypt the ciphertext (i used <strong> Cantor-Zassenhaus algo </strong>to calculate nth root of p cuz the built-in nth_root function of SageMath runs too slow)</p>
       <p>(6) The last step is to decode OAEP encoding </p>
-      <p> Enough talks, here my solve script. (Note: to satisty condition (1) we just need to reconnection till it is)</p>
+      <p> Enough talks, here's my solve script. (Note: to satisty condition (1) we just need to reconnection till it is)</p>
       <HighLight autodetect v-bind:code="code1" />
       <p> My OAEP decoder for step (6) </p>
       <HighLight autodetect v-bind:code="code2" />
       <p> <strong>Flag</strong>: dice{rabin-williams-cryptosystem-in-disguise-3038e78caa07} </p>
       <h2 id="bbbb">bbbb</h2>
       <hr />
-      <p> i did not solve this challenge during CTF unfortunately (i messed up Coppersmith method parameters), and a teammate of mine help me out on lcg part</p>
+      <p> i did not solve this challenge during CTF unfortunately (i messed up the Coppersmith method parameters, oopsie), and a teammate of mine help me out on lcg part</p>
       <p> Credit to my teammate who comes up with the idea for LCG part (nothing)</p>
       <div class="chall"> 
         <h3> Challenge Description </h3>
@@ -60,15 +60,15 @@
         <p> Solver: <a href="https://github.com/sudo-rainman/ctf_script/blob/main/dicectf_2023/BBBB/solver/solver.py"> my solver</a> </p>
       </div>
       <p> Chall description is best describe here: <a href="https://imp.ress.me/blog/2022-11-13/seccon-ctf-2022#bbb"> SECCON CTF 2022 - bbb </a> </p>
-      <p> The differences are the rng function used in this chall is LCG ( y= a.x + b ) insteads of QCG  and there were noises added to the flag before encryption  </p>
-      <p> For this chall the padded <strong> FLAG </strong> is at most 552 bits long, so minimum of 3 pairs of 2048-bit RSA key and an e=11 (1) is vulnerable to Hastad's attack but since there were noises, a more generalization of Hastad's broadcast attack shud be used. </p> 
+      <p> The differences are the rng function used in this chall is LCG ( y= a.x + b ) insteads of QCG  and there were random noises added to the flag before encryption  </p>
+      <p> For this chall the padded <strong> FLAG </strong> is at most 552 bits long, so minimum of 3 pairs of 2048-bit RSA key and an e=11 (1) is vulnerable to Hastad's attack but since there were random noises, a more generalization of Hastad's broadcast attack shud be used. </p> 
       <p> So to solve for the condition (1) where we want to send 3 different seeds and it must always satisfy that rng(seed) = 11. </p>
       <p> We first must calculate <strong>a </strong> such that the rng have cycle length of 3 where the starting seed is 11</p>
-      <p> The success rate is <math-jax latex="\frac{1}{9}"> </math-jax> since the first seed is always 11, 2nd and 3rd seed have cycle of 3 but may overshoot value 11 </p>
+      <p> The success rate is <math-jax latex="\frac{1}{27}"> </math-jax> since all three of the seed have cycle of 3 but may overshoot value 11 (rng(1st_seed)=11 when the rng run time is divided by 3, rng(2nd_seed)=11 when the rng run time is divided by 2, rng(3rd_seed)=11 when the rng run time is 1 modulo 2)</p>
       <div style="display: flex; justify-content: center; ">
       <img src="../assets/dicectf/lcg.png"> 
       </div>
-      <p> Which is essentially solving for roots of function <math-jax latex="f = 11a^3+(a^2 + a + 1).b-11 = 0"> </math-jax> </p>
+      <p> Which is essentially solving for roots (a) of equation <math-jax latex="f = 11a^3+(a^2 + a + 1).b-11 = 0 \mod N"> </math-jax> </p>
       <HighLight autodetect v-bind:code="code3" />
       <p> Afterward, just chunk the general Hastad's broadcast attack into the ciphertext pairs to recover the flag </p>
       <div style="display: flex; justify-content: center;">
